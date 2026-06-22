@@ -40,6 +40,18 @@ ${conventionLine}
   if (hint) {
     prompt += `\n\nDisambiguation context (use only to choose the right term; do NOT change the output format): the term comes from the field of ${hint}.`;
   }
+
+  // Anti-literal steering: a few examples showing idiomatic engineering terms,
+  // NOT word-for-word translation. Output format stays answer-only.
+  prompt += `\n\nExamples (Indonesian -> the term engineers actually use; never word-for-word):
+lantai dasar -> Ground floor
+pekerjaan tanah -> Earthworks
+dinding geser -> Shear wall
+balok anak -> Secondary beam
+kolom praktis -> Practical column
+sloof -> Tie beam / Ground beam
+pembesian -> Rebar work / Reinforcement`;
+
   return prompt;
 }
 
