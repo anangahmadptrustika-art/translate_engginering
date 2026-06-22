@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #000;
+  color: #f4f4f5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Keep focus rings tidy on the dark theme */
+:focus-visible {
+  outline: none;
+}

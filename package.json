@@ -1,0 +1,29 @@
+{
+  "name": "penerjemah-istilah-teknik",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Indonesian -> English construction/engineering terminology translator (glossary-first, LLM fallback).",
+  "scripts": {
+    "dev": "concurrently -k -n web,api -c yellow,green \"vite\" \"node --watch server/index.js\"",
+    "dev:web": "vite",
+    "dev:api": "node --watch server/index.js",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.4.11"
+  }
+}
