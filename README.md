@@ -44,12 +44,33 @@ npm run dev
 This runs the Vite dev server (http://localhost:5173) and the API proxy
 (http://localhost:3001) together. Vite proxies `/api` to the backend.
 
-## Production
+## Production (self-hosting)
 
 ```bash
 npm run build   # builds the frontend into dist/
 npm start       # Express serves dist/ AND the /api endpoint on $PORT
 ```
+
+## Deploy to Vercel
+
+On Vercel the backend runs as a serverless function (`api/translate.js`), not
+the Express server. `server/translate.js` holds the shared logic used by both.
+
+1. Push this repo to GitHub (already done) and **Import Project** in Vercel,
+   or run `vercel` with the CLI. Vercel auto-detects the Vite framework
+   (`vercel.json` pins build command `vite build` and output `dist`).
+2. Add **Environment Variables** in the Vercel dashboard
+   (Project → Settings → Environment Variables) — do NOT commit a `.env`:
+   - `LLM_PROVIDER` = `anthropic` (or `groq`)
+   - `ANTHROPIC_API_KEY` = your key (when provider is anthropic)
+   - `ANTHROPIC_MODEL` = `claude-sonnet-4-6` (optional)
+   - `GROQ_API_KEY` / `GROQ_MODEL` (when provider is groq)
+3. Deploy. The frontend is served statically from `dist`, and the relative
+   call `POST /api/translate` is routed to the serverless function. The key
+   stays server-side and never appears in the client bundle.
+
+> Local dev still uses the Express proxy via `npm run dev`. You don't need the
+> Vercel CLI for local development.
 
 ## How the API key stays server-side
 

@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Indonesian -> English construction/engineering terminology translator (glossary-first, LLM fallback).",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "concurrently -k -n web,api -c yellow,green \"vite\" \"node --watch server/index.js\"",
     "dev:web": "vite",
